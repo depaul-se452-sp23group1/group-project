@@ -1,7 +1,7 @@
 package edu.depaul.cdm.se452.accounts.model;
 
 public class Customer {
-    private int id;
+    private long id;
     private String firstName;
     private String lastName;
     private String streetAddress1;

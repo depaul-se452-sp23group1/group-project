@@ -5,7 +5,7 @@ import edu.depaul.cdm.se452.products.model.Product;
 import java.util.List;
 
 public class Order {
-private int id;
+private long id;
 private List<Product> productsList;
 
 private double subtotal;
