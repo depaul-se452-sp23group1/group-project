@@ -1,0 +1,11 @@
+spring:
+  profiles:
+    active: prod
+  datasource:
+    url: jdbc:mariadb://database-1.cey5rm922ile.us-east-1.rds.amazonaws.com
+    username: store
+    password: depaul1234
+    driver-class-name: org.mariadb.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
