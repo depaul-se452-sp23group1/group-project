@@ -28,4 +28,12 @@ public class UserService {
         User user = userRepository.findById(id);
         return user;
     }
+
+    public User addUser(User user) {
+        return userRepository.save(user);
+    }
+
+    public User updateUser(User user) {
+        return userRepository.save(user);
+    }
 }
