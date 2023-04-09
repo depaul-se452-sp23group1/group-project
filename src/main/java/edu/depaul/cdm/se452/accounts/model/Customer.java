@@ -1,6 +1,12 @@
 package edu.depaul.cdm.se452.accounts.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import lombok.Data;
+
+@Data
 public class Customer {
+    @Id
     private long id;
     private String firstName;
     private String lastName;
