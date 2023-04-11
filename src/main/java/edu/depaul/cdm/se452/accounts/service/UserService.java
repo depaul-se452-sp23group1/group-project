@@ -1,5 +1,6 @@
 package edu.depaul.cdm.se452.accounts.service;
 
+import edu.depaul.cdm.se452.accounts.model.Customer;
 import edu.depaul.cdm.se452.accounts.model.User;
 import edu.depaul.cdm.se452.accounts.repository.UserRepository;
 import lombok.extern.log4j.Log4j;
@@ -30,10 +31,20 @@ public class UserService {
     }
 
     public User addUser(User user) {
+        log.info("Adding a new user: {}",user);
         return userRepository.save(user);
     }
 
     public User updateUser(User user) {
-        return userRepository.save(user);
+        if (userRepository.findById(user.getId())!= null){
+            log.info("Updating a User:{}",user);
+            return userRepository.save(user);
+        }
+        log.info("Adding a new user since none matches:{}",user);
+        return addUser(user);
+    }
+    public User deleteUserById(long id) {
+        log.info("Deleting the User info:{}",id);
+        return userRepository.deleteUserById(id);
     }
 }

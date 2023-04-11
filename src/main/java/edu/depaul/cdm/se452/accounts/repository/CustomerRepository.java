@@ -12,4 +12,5 @@ public interface CustomerRepository extends CrudRepository<Customer, Long> {
     Customer findCustomerById(long id);
     Customer findCustomerByUser_Email(String email);
 
+    Customer deleteCustomerById(long id);
 }
