@@ -29,6 +29,6 @@ public class CustomerController {
     @PutMapping
     public Customer updateCustomer(@RequestBody Customer customer) { return  customerService.updateCustomer(customer);}
 
-    @DeleteMapping
-    public Customer deleteCustomer(@RequestBody long id) {return  customerService.deleteCustomer(id);}
+    @RequestMapping(value = "/customer/{id}", method = RequestMethod.DELETE)
+    public Customer deleteCustomer(@PathVariable long id) {return  customerService.deleteCustomer(id);}
 }

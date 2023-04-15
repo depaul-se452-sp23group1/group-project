@@ -2,10 +2,15 @@ package edu.depaul.cdm.se452.accounts.controller;
 
 import edu.depaul.cdm.se452.accounts.model.User;
 import edu.depaul.cdm.se452.accounts.service.UserService;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
+@Log4j2
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -32,8 +37,24 @@ public class UserController {
     public User updateUser(@RequestBody User user) {
         return userService.updateUser(user);
     }
-    @DeleteMapping("/id/{id}")
-    public User deleteUser(@PathVariable long id) {
-        return userService.deleteUserById(id);
+    @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<User> deleteUser(@PathVariable long id) {
+        User us1 = new User();
+        us1 = userService.findById(id);
+        log.info(us1);
+        if (us1==null){
+            return new ResponseEntity<User>(us1, HttpStatus.NOT_FOUND);
+        }
+        else {
+            userService.deleteUserById(id);
+            return new ResponseEntity<User>(us1, HttpStatus.OK);
+        }
     }
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public Map<String,String> handleValidationExceptions(MethodArgumentNotValidException e){
+        Map<Strin>
+    }
+
+
 }

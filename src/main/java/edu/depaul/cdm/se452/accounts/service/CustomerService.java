@@ -40,6 +40,6 @@ public class CustomerService {
 
     public Customer deleteCustomer(long id) {
             log.info("Deleting the customer info:{}",id);
-            return customerRepository.deleteCustomerById(id);
+            return customerRepository.deleteById(id);
     }
 }

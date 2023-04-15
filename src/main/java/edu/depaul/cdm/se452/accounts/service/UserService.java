@@ -45,6 +45,6 @@ public class UserService {
     }
     public User deleteUserById(long id) {
         log.info("Deleting the User info:{}",id);
-        return userRepository.deleteUserById(id);
+        return userRepository.deleteById(id);
     }
 }
