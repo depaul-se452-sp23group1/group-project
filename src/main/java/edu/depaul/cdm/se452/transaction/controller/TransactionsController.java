@@ -9,13 +9,13 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
-@RequestMapping("/transactions")
+@RequestMapping("/api/transactions")
 public class TransactionsController {
 
     @Autowired
-    TransactionService transactionService;
+    private TransactionService transactionService;
 
-    @GetMapping(value="/id/{id}", produces = "application/json")
+    @GetMapping(value="/{id}", produces = "application/json")
     public Transactions getTransaction(@PathVariable long id) {
         return transactionService.findById(id);
     }
