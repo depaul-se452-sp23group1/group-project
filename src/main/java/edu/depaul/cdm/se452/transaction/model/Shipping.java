@@ -6,8 +6,9 @@ import lombok.Data;
 @Entity
 public class Shipping {
 
-    private String shpId;
+    private long shpId;
     private String shpMethod;
+    private String shpStatus;
     @Column(name="address_1")
     private String address1;
     @Column(name="address_2")
@@ -15,6 +16,6 @@ public class Shipping {
     private String city;
     private String zip;
     private String state;
-    @JoinColumn(name="tr_id", referencedColumnName = "transaction_id")
+    @JoinColumn(name="tr_id", referencedColumnName = "tr_id")
     private Transactions transaction;
 }
