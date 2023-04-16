@@ -18,4 +18,5 @@ public class Shipping {
     private String state;
     @JoinColumn(name="tr_id", referencedColumnName = "tr_id")
     private Transactions transaction;
+    private long tr_id; // should I add??
 }
