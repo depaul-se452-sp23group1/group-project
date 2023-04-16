@@ -21,11 +21,13 @@ public class ShippingController {
 
     @GetMapping(value="/id/{id}", produces = "application/json")
     public Shipping getShippingbyId(@PathVariable long id) {
+
         return shippingService.findById(id);
     }
 
     @PostMapping
     public Shipping addShipping(@RequestBody Shipping newShipping) {
+
         return shippingService.addShipping(newShipping);
     }
 
@@ -33,5 +35,10 @@ public class ShippingController {
     public List<Shipping> getAllShipping() {
         List<Shipping> shippings = shippingService.findAll();
         return shippings;
+    }
+
+    @PutMapping
+    public Shipping updateShipping(@RequestBody Shipping shipping) {
+        return  shippingService.updateShipping(shipping);
     }
 }
