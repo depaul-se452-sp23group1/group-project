@@ -1,5 +1,6 @@
 package edu.depaul.cdm.se452.transaction.service;
 import edu.depaul.cdm.se452.transaction.model.Shipping;
+import edu.depaul.cdm.se452.transaction.model.Transactions;
 import edu.depaul.cdm.se452.transaction.repository.ShippingRepository;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,5 +35,10 @@ public class ShippingService {
         log.info("Retrieving all the Shipping of existing transactions {} ");
         List<Shipping> shipping = shippingRepository.findAll();
         return shipping;
+    }
+
+    public Shipping updateShipping(Shipping shipping) {
+        log.info("Updating a Shipping record:{}",shipping);
+        return shippingRepository.save(shipping);
     }
 }

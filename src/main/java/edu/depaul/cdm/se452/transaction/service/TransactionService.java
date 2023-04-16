@@ -1,5 +1,6 @@
 package edu.depaul.cdm.se452.transaction.service;
 
+import edu.depaul.cdm.se452.accounts.model.Customer;
 import edu.depaul.cdm.se452.transaction.model.Transactions;
 import edu.depaul.cdm.se452.transaction.repository.TransactionsRepository;
 import lombok.extern.log4j.Log4j2;
@@ -41,5 +42,9 @@ public class TransactionService {
         return transactions;
     }
 
+    public Transactions updateTransaction(Transactions transaction) {
+        log.info("Updating a Transaction:{}",transaction);
+        return transactionsRepository.save(transaction);
+    }
 
 }
