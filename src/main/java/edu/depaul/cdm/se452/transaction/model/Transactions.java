@@ -24,11 +24,13 @@ public class Transactions {
   //  @JoinColumn(name="order_id", referencedColumnName = "order_id") //check
     //private Order order;
     //@JoinColumn(name="", referencedColumnName = "id")
-   // private User user;
-    // should I add ?? private long userId;
+  @Column(name="tr_amt")
     private double trAmt;
+    @Column(name="cc_number")
     private long ccNumber;
+    @Column(name="cc_exp_date")
     private Date ccExpDate;
+    @Column(name="cc_name")
     private String ccName;
-  //  private String status;
+    private String status;
 }
