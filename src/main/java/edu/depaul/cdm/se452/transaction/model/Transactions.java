@@ -9,18 +9,17 @@ import lombok.NoArgsConstructor;
 import java.util.Date;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "transactions")
 @Entity
 public class Transactions {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+   // @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "tr_id")
     private long trId;
   //  @OneToOne(mappedBy = "transactions")
    // private Shipping shipping;
-    //private Date trDate;
+  @Column(name = "tr_date")
+    private Date trDate;
   //  @JoinColumn(name="order_id", referencedColumnName = "order_id") //check
     //private Order order;
     //@JoinColumn(name="", referencedColumnName = "id")
