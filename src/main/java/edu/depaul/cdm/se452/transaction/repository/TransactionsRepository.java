@@ -12,4 +12,6 @@ public interface TransactionsRepository extends CrudRepository<Transactions, Lon
   //  List<Transactions> findByDate(Date date);
 
     List<Transactions> findAll();
+
+    void deleteById(long id);
 }
