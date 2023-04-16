@@ -20,9 +20,10 @@ public class Transactions {
    // private Shipping shipping;
   @Column(name = "tr_date")
     private Date trDate;
+
   //  @JoinColumn(name="order_id", referencedColumnName = "order_id") //check
     //private Order order;
-    //@JoinColumn(name="", referencedColumnName = "id")
+
   @Column(name="tr_amt")
     private double trAmt;
     @Column(name="cc_number")
