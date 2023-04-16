@@ -35,7 +35,7 @@ public class TransactionTest {
     @Test
     public void testAddTransaction(){
         Transactions transactions = new Transactions();
-        transactions.setTrId(5);
+        transactions.setTrId(7);
         transactions.setTrAmt(100);
         transactions.setCcNumber(123456789);
         transactions.setCcName("test");
@@ -60,5 +60,29 @@ public class TransactionTest {
         List<Transactions> transactions = repository.findAll();
         var totalCount = repository.count();
         assertEquals(transactions.size(), totalCount);
+    }
+
+    @Test
+    public void testUpdateTransaction() {
+        Transactions transactions = new Transactions();
+        transactions.setTrId(10);
+        transactions.setTrAmt(9090);
+        repository.save(transactions);
+
+        Transactions transactions1 = repository.findById(10);
+        //check update
+        assertEquals(transactions1.getTrAmt(), 9090);
+
+    }
+
+    @Test
+    public void testDeleteTransaction(){
+
+        var b4Delete = repository.count();
+        repository.deleteById(6);
+        var afterDelete = repository.count();
+
+        assertEquals(b4Delete, afterDelete+1);
+
     }
 }

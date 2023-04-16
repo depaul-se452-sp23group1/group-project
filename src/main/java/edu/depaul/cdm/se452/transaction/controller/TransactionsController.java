@@ -1,6 +1,7 @@
 package edu.depaul.cdm.se452.transaction.controller;
 
 import edu.depaul.cdm.se452.accounts.model.Customer;
+import edu.depaul.cdm.se452.products.model.Category;
 import edu.depaul.cdm.se452.products.model.Product;
 import edu.depaul.cdm.se452.transaction.model.Transactions;
 import edu.depaul.cdm.se452.transaction.service.TransactionService;
@@ -47,4 +48,16 @@ public class TransactionsController {
     public Transactions updateTransaction(@RequestBody Transactions transaction) {
         return  transactionService.updateTransaction(transaction);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteTransaction(@PathVariable("id") long id) {
+        Transactions presentTransaction = transactionService.findById(id);
+        if (presentTransaction != null) {
+            transactionService.deleteTransaction(id);
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
 }
