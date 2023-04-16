@@ -14,28 +14,22 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/transactions")
+@RequestMapping("/transactions")
 @Log4j2
 public class TransactionsController {
     @Autowired
-    private TransactionService transactionService;
+    TransactionService transactionService;
 
-    @GetMapping(value="/{id}", produces = "application/json")
-    public ResponseEntity<Transactions> getTransaction(@PathVariable("id") long id) {
-        Transactions transactions = transactionService.findById(id);
-        if(transactions != null) {
-            return ResponseEntity.ok(transactions);
-        }
-        else {
-            return ResponseEntity.notFound().build();
-        }
+    @GetMapping(value="/id/{id}", produces = "application/json")
+    public Transactions getTransaction(@PathVariable long id) {
+       return transactionService.findById(id);
     }
 
-    @GetMapping(value="/date/{date}", produces = "application/json")
-    public List<Transactions> getTransactionbyDate(@PathVariable Date date) {
-        List<Transactions> transactions = transactionService.findByDate(date);
-        return transactions;
-    }
+  //  @GetMapping(value="/date/{date}", produces = "application/json")
+    //public List<Transactions> getTransactionbyDate(@PathVariable Date trDate) {
+     //   List<Transactions> transactions = transactionService.findByDate(trDate);
+      //  return transactions;
+   // }
 
     @GetMapping
     public List<Transactions> getAllTransactions() {
@@ -53,7 +47,4 @@ public class TransactionsController {
     public Transactions updateTransaction(@RequestBody Transactions transaction) {
         return  transactionService.updateTransaction(transaction);
     }
-
-
-
 }

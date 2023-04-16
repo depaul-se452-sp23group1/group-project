@@ -16,7 +16,7 @@ public class TransactionService {
 
     private TransactionsRepository transactionsRepository;
     @Autowired
-    public TransactionService(TransactionService transactionService) {
+    public TransactionService(TransactionsRepository transactionsRepository) {
 
         this.transactionsRepository = transactionsRepository;
     }
@@ -31,11 +31,11 @@ public class TransactionService {
         return transactionsRepository.save(transaction);
     }
 
-    public List<Transactions> findByDate(Date date) {
-        log.info("Looking up transaction by date: {} ", date);
-        List<Transactions> transactions = transactionsRepository.findByDate(date);
-        return transactions;
-    }
+  //  public List<Transactions> findByDate(Date date) {
+    //    log.info("Looking up transaction by date: {} ", date);
+      //  List<Transactions> transactions = transactionsRepository.findByDate(date);
+        //return transactions;
+    //}
     public List<Transactions> findAll(){
         log.info("Retrieving all the transactions {} ");
         List<Transactions> transactions = transactionsRepository.findAll();

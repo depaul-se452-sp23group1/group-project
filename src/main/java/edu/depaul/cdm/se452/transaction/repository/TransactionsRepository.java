@@ -9,7 +9,7 @@ public interface TransactionsRepository extends CrudRepository<Transactions, Lon
 
     Transactions findById(long id);
 
-    List<Transactions> findByDate(Date date);
+  //  List<Transactions> findByDate(Date date);
 
     List<Transactions> findAll();
 }
