@@ -18,17 +18,17 @@ public class Transactions {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "tr_id")
     private long trId;
-    @OneToOne(mappedBy = "transactions")
-    private Shipping shipping;
-    private Date trDate;
-    @JoinColumn(name="order_id", referencedColumnName = "order_id") //check
-    private Order order;
-    @JoinColumn(name="", referencedColumnName = "id")
-    private User user;
+  //  @OneToOne(mappedBy = "transactions")
+   // private Shipping shipping;
+    //private Date trDate;
+  //  @JoinColumn(name="order_id", referencedColumnName = "order_id") //check
+    //private Order order;
+    //@JoinColumn(name="", referencedColumnName = "id")
+   // private User user;
     // should I add ?? private long userId;
     private double trAmt;
     private long ccNumber;
     private Date ccExpDate;
     private String ccName;
-    private String status;
+  //  private String status;
 }
