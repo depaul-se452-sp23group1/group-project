@@ -2,11 +2,18 @@ package edu.depaul.cdm.se452.transaction.model;
 import edu.depaul.cdm.se452.accounts.model.User;
 import jakarta.persistence.*;
 import jakarta.persistence.criteria.Order;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Table(name = "transactions")
 @Entity
 public class Transactions {
     @Id
@@ -25,6 +32,4 @@ public class Transactions {
     private long ccNumber;
     private Date ccExpDate;
     private String ccName;
-
-
 }
