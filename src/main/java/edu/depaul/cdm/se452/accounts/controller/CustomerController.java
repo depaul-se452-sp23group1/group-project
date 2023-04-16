@@ -1,10 +1,10 @@
 package edu.depaul.cdm.se452.accounts.controller;
 
 import edu.depaul.cdm.se452.accounts.model.Customer;
-import edu.depaul.cdm.se452.accounts.model.User;
 import edu.depaul.cdm.se452.accounts.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -29,8 +29,14 @@ public class CustomerController {
     @PutMapping
     public Customer updateCustomer(@RequestBody Customer customer) { return  customerService.updateCustomer(customer);}
 
-    @RequestMapping(value = "/customer/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
     public Customer deleteCustomer(@PathVariable long id) {
-        return  customerService.deleteCustomer(id);
+        Customer cust = new Customer();
+        cust = customerService.findById(id);
+        if (cust == null){
+            return new ResponseEntity<Customer>(HttpStatus.NOT_FOUND).getBody();
+        }
+        customerService.deleteCustomer(id);
+        return new ResponseEntity<Customer>(HttpStatus.OK).getBody();
     }
 }
