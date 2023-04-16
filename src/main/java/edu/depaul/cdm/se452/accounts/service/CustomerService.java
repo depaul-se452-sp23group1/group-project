@@ -34,8 +34,12 @@ public class CustomerService {
     }
 
     public Customer updateCustomer(Customer customer) {
-        log.info("Updating a Customer:{}",customer);
-        return customerRepository.save(customer);
+        if(customerRepository.findCustomerById(customer.getId())!=null){
+            log.info("Updating a Customer:{}",customer);
+            return customerRepository.save(customer);
+        }
+        log.info("No such customer found so adding a new customer:{}",customer);
+       return customerRepository.save(customer);
     }
 
     public Customer deleteCustomer(long id) {

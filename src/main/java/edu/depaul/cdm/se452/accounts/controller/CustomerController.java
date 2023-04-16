@@ -30,5 +30,7 @@ public class CustomerController {
     public Customer updateCustomer(@RequestBody Customer customer) { return  customerService.updateCustomer(customer);}
 
     @RequestMapping(value = "/customer/{id}", method = RequestMethod.DELETE)
-    public Customer deleteCustomer(@PathVariable long id) {return  customerService.deleteCustomer(id);}
+    public Customer deleteCustomer(@PathVariable long id) {
+        return  customerService.deleteCustomer(id);
+    }
 }

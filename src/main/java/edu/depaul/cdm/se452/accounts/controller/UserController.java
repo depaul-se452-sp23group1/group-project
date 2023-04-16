@@ -23,7 +23,7 @@ public class UserController {
         return userService.findByEmail(email);
     }
 
-    @GetMapping(value="/id/{id}", produces = "application/json")
+    @GetMapping(value = "/id/{id}", produces = "application/json")
     public User getUser(@PathVariable long id) {
         return userService.findById(id);
     }
@@ -37,24 +37,15 @@ public class UserController {
     public User updateUser(@RequestBody User user) {
         return userService.updateUser(user);
     }
+
     @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
     public ResponseEntity<User> deleteUser(@PathVariable long id) {
         User us1 = new User();
         us1 = userService.findById(id);
-        log.info(us1);
-        if (us1==null){
-            return new ResponseEntity<User>(us1, HttpStatus.NOT_FOUND);
+        if (us1 == null) {
+            return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
         }
-        else {
-            userService.deleteUserById(id);
-            return new ResponseEntity<User>(us1, HttpStatus.OK);
+        userService.deleteUserById(id);
+        return new ResponseEntity<User>( HttpStatus.OK);
         }
-    }
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public Map<String,String> handleValidationExceptions(MethodArgumentNotValidException e){
-        Map<Strin>
-    }
-
-
 }
