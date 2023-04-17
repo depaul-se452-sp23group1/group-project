@@ -1,12 +1,9 @@
 package edu.depaul.cdm.se452.accounts.service;
 
 import edu.depaul.cdm.se452.accounts.model.Customer;
-import edu.depaul.cdm.se452.accounts.model.User;
 import edu.depaul.cdm.se452.accounts.repository.CustomerRepository;
-import edu.depaul.cdm.se452.accounts.repository.UserRepository;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -21,7 +18,7 @@ public class CustomerService {
 
     public Customer findByEmail(String email) {
         log.info("Looking up customer by email: {}", email);
-        return customerRepository.findCustomerByUser_Email(email);
+        return customerRepository.findCustomerByEmail(email);
     }
 
     public Customer findById(long id){
@@ -39,11 +36,11 @@ public class CustomerService {
             return customerRepository.save(customer);
         }
         log.info("No such customer found so adding a new customer:{}",customer);
-       return customerRepository.save(customer);
+        return customerRepository.save(customer);
     }
 
-    public Customer deleteCustomer(long id) {
-            log.info("Deleting the customer info:{}",id);
-            return customerRepository.deleteById(id);
+    public void deleteCustomer(long id) {
+        log.info("Deleting the customer info:{}",id);
+        customerRepository.deleteById(id);
     }
 }
