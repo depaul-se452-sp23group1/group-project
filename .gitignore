@@ -27,6 +27,7 @@ hs_err_pid*
 
 # Ignore Gradle build output directory
 build
+/build/
 
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
@@ -106,4 +107,9 @@ fabric.properties
 
 # Android studio 3.1+ serialized cache file
 .idea/caches/build_file_checksums.ser!/.idea/
-!/.idea/
+/.idea/
+
+/.idea/modules/group-project.iml
+/.idea/modules/group-project.main.iml
+/.idea/modules/group-project.test.iml
+/.idea/modules.xml
