@@ -1,5 +1,4 @@
 package edu.depaul.cdm.se452.transaction.model;
-import edu.depaul.cdm.se452.accounts.model.User;
 import jakarta.persistence.*;
 import jakarta.persistence.criteria.Order;
 import lombok.AllArgsConstructor;
