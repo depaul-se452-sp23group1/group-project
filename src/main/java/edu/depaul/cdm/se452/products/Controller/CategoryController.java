@@ -14,7 +14,7 @@ import java.util.List;
 public class CategoryController {
 
     @Autowired
-    private CategoryService categoryService;
+    CategoryService categoryService;
 
     @GetMapping
     public List<Category> getAllCategories() {
