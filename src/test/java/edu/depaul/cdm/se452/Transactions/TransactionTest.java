@@ -35,7 +35,7 @@ public class TransactionTest {
     @Test
     public void testAddTransaction(){
         Transactions transactions = new Transactions();
-        transactions.setTrId(7);
+        transactions.setTrId(15);
         transactions.setTrAmt(100);
         transactions.setCcNumber(123456789);
         transactions.setCcName("test");
