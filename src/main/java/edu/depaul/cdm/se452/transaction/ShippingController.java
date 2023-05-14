@@ -1,8 +1,5 @@
-package edu.depaul.cdm.se452.transaction.controller;
+package edu.depaul.cdm.se452.transaction;
 
-import edu.depaul.cdm.se452.transaction.model.Shipping;
-import edu.depaul.cdm.se452.transaction.model.Transactions;
-import edu.depaul.cdm.se452.transaction.service.ShippingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

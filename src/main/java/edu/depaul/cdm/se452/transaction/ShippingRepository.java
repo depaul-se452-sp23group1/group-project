@@ -1,6 +1,4 @@
-package edu.depaul.cdm.se452.transaction.repository;
-import edu.depaul.cdm.se452.transaction.model.Shipping;
-import edu.depaul.cdm.se452.transaction.model.Transactions;
+package edu.depaul.cdm.se452.transaction;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
