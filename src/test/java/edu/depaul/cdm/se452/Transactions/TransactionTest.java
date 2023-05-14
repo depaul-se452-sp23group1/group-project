@@ -2,8 +2,8 @@ package edu.depaul.cdm.se452.Transactions;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import edu.depaul.cdm.se452.transaction.model.Transactions;
-import edu.depaul.cdm.se452.transaction.repository.TransactionsRepository;
+import edu.depaul.cdm.se452.transaction.Transactions;
+import edu.depaul.cdm.se452.transaction.TransactionsRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

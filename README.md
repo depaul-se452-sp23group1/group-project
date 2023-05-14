@@ -11,12 +11,12 @@ The user can place an order and make a payment through the application.
 
 **Project Members**
 ---
-| Name          | Functional Area |
-|---------------| --- |
-| Karthik       | Account Management |
-| CHandrashekar | Category and Products Module |
-| Josh          | Orders & Cart Module |
-| Bramhashree   | Payment Transaction|
+| Name          | Functional Area                |
+|---------------|--------------------------------|
+| Karthik       | Account Management             |
+| CHandrashekar | Category and Products Module   |
+| Josh          | Orders & Cart Module           |
+| Bramhashree   | Payment Transaction & Shipping |
 
 **Conflict Resolution**
 ---
@@ -43,3 +43,14 @@ We then created a git repository for our project.
 After assigning the functional areas for each team member, each of us tried to make changes in the README file and push it to the repository.
 We finally created the Spring Skeleton with the above mentioned configurations and pushed it to the Git repository.
 As of now everyone is working on their functional tables.
+---
+We created entities corresponding to each functional area and mapped them with the database tables.
+Using CrudRepository we we were able to use the build-in functions such as save, delete, findById, finaAll, update, etc.
+We created Controllers and Service classes accordingly and also successfully test it both through Postman and Junit testcases.
+---
+As per the feedback, we added the package-info files for each package
+We implemented the Logging using Log4j2
+We also included additional services that would support the Application flow.
+Concepts such as relation mapping and inheritance were considered while designing the application.
+We discussed about the UI layer in the meeting and finalised on implementing Angular JS.
+Currently working on including NoSql to support certain features of the app.

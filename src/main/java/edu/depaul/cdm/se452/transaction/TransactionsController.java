@@ -1,10 +1,5 @@
-package edu.depaul.cdm.se452.transaction.controller;
+package edu.depaul.cdm.se452.transaction;
 
-import edu.depaul.cdm.se452.accounts.model.Customer;
-import edu.depaul.cdm.se452.products.model.Category;
-import edu.depaul.cdm.se452.products.model.Product;
-import edu.depaul.cdm.se452.transaction.model.Transactions;
-import edu.depaul.cdm.se452.transaction.service.TransactionService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,6 +8,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
+/**
+ * Documented services
+ */
 
 @RestController
 @RequestMapping("/transactions")
@@ -26,11 +24,11 @@ public class TransactionsController {
        return transactionService.findById(id);
     }
 
-  //  @GetMapping(value="/date/{date}", produces = "application/json")
-    //public List<Transactions> getTransactionbyDate(@PathVariable Date trDate) {
-     //   List<Transactions> transactions = transactionService.findByDate(trDate);
-      //  return transactions;
-   // }
+    @GetMapping(value="/date/{date}", produces = "application/json")
+    public List<Transactions> getTransactionbyDate(@PathVariable Date trDate) {
+        List<Transactions> transactions = transactionService.findByDate(trDate);
+        return transactions;
+    }
 
     @GetMapping
     public List<Transactions> getAllTransactions() {

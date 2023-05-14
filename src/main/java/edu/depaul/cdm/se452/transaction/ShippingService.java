@@ -1,7 +1,4 @@
-package edu.depaul.cdm.se452.transaction.service;
-import edu.depaul.cdm.se452.transaction.model.Shipping;
-import edu.depaul.cdm.se452.transaction.model.Transactions;
-import edu.depaul.cdm.se452.transaction.repository.ShippingRepository;
+package edu.depaul.cdm.se452.transaction;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,18 +25,26 @@ public class ShippingService {
 
     public Shipping addShipping(Shipping shipping) {
         log.info("Adding a new shipping record - transaction: {}",shipping);
-        return shippingRepository.save(shipping);
+        log.traceEntry("enter save", shipping);
+        shippingRepository.save(shipping);
+        log.traceExit("exit save", shipping);
+        return shipping;
     }
 
     public List<Shipping> findAll(){
         log.info("Retrieving all the Shipping of existing transactions {} ");
+        log.traceEntry("Enter list");
         List<Shipping> shipping = shippingRepository.findAll();
+        log.traceExit("Exit list", shipping);
         return shipping;
     }
 
     public Shipping updateShipping(Shipping shipping) {
         log.info("Updating a Shipping record:{}",shipping);
-        return shippingRepository.save(shipping);
+        log.traceEntry("enter save", shipping);
+        shippingRepository.save(shipping);
+        log.traceExit("exit save", shipping);
+        return shipping;
     }
     //testing
 }

@@ -1,4 +1,6 @@
-package edu.depaul.cdm.se452.transaction.model;
+package edu.depaul.cdm.se452.transaction;
+
+import edu.depaul.cdm.se452.products.model.Category;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -10,6 +12,11 @@ public class Shipping {
     @Id
     @Column(name="shp_id")
     private long shpId;
+
+    @OneToOne
+    @JoinColumn(name = "tr_id")
+    private Transactions transactions;
+
     @Column(name="shp_method")
     private String shpMethod;
     @Column(name="shp_status")
