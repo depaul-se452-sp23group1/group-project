@@ -6,8 +6,10 @@
  *  The Repository module has the inbuilt Jpa repository methods.
  * </p>
  * <li>
- *     Customers can be added to the database in order enter the system
+ *     Customers can be added to the database in order to enter the system
  *     I had implemented Logging with Log4j2
+ *     Tested with PostMan App
+ *     Also Implemented Junit tests in Test folder
  * </li>
  * @since 1.0
  * @author karthikrajachandrasekaran
