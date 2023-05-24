@@ -32,15 +32,19 @@ public class ShippingTest {
        shipping.setCity("Chicago");
        shipping.setState("IL");
        shipping.setZip("60661");
+       Transactions transactions = new Transactions();
+       transactions.setTrId(50);
+       shipping.setTrId(50);
+       shipping.setTransactions(transactions);
 
-        String expectedOutput = "Shipping(shpId=1, shpMethod=Express, shpStatus=Success, address1=555 W Qwerty St, address2=Apt 1808, city=Chicago, zip=60661, state=IL, trId=0)";
+       String expectedOutput = "Shipping(shpId=1, transactions=Transactions(trId=50, trAmt=0.0, ccNumber=0, ccExpDate=null, ccName=null, status=null), shpMethod=Express, shpStatus=Success, address1=555 W Qwerty St, address2=Apt 1808, city=Chicago, zip=60661, state=IL, trId=50)";
        assertEquals(expectedOutput, shipping.toString());
     }
 
     @Test
     public void testAddShipping(){
         Shipping shipping = new Shipping();
-        shipping.setShpId(2);
+        shipping.setShpId(3);
         shipping.setShpMethod("Express");
         shipping.setShpStatus("Success");
         shipping.setAddress1("555 W Qwerty St");
@@ -48,6 +52,7 @@ public class ShippingTest {
         shipping.setCity("Chicago");
         shipping.setState("IL");
         shipping.setZip("60661");
+        shipping.setTrId(3);
 
         var b4Add = repository.count();
         repository.save(shipping);
@@ -58,7 +63,7 @@ public class ShippingTest {
     @Test
     public void testFindByID(){
         Shipping shipping = repository.findById(1);
-        assertEquals(shipping.getCity(), "Chicago");
+        assertEquals(shipping.getCity(), "chicago");
     }
 
     @Test

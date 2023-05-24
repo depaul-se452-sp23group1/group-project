@@ -31,13 +31,13 @@ public class TransactionService {
         return transaction;
     }
 
-     public List<Transactions> findByDate(Date date) {
-          log.info("Looking up transaction by date: {} ", date.toString());
+     /**public List<Transactions> findByDate(Date tr_date) {
+          log.info("Looking up transaction by date: {} ", tr_date.toString());
           log.traceEntry("Enter list");
-          List<Transactions> transactions = transactionsRepository.findByDate(date);
+          List<Transactions> transactions = transactionsRepository.findByDate(tr_date);
           log.traceExit("Exit list", transactions);
           return transactions;
-    }
+    }**/
     public List<Transactions> findAll(){
         log.info("Retrieving all the transactions {} ");
         log.traceEntry("Enter list");
