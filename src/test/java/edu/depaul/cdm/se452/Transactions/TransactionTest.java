@@ -23,19 +23,19 @@ public class TransactionTest {
     public void testLombok() {
         Transactions transactions = new Transactions();
         transactions.setTrId(1);
-        transactions.setTrAmt(100);
+        transactions.setTrAmt(100.0);
         transactions.setCcNumber(123456789);
         transactions.setCcName("Bram");
         transactions.setStatus("Success");
 
-        String expectedOutput= "Transactions(trId=1, trDate=null, trAmt=100.0, ccNumber=123456789, ccExpDate=null, ccName=Bram, status=Success)";
+        String expectedOutput= "Transactions(trId=1, trAmt=100.0, ccNumber=123456789, ccExpDate=null, ccName=Bram, status=Success)";
         assertEquals(expectedOutput, transactions.toString());
     }
 
     @Test
     public void testAddTransaction(){
         Transactions transactions = new Transactions();
-        transactions.setTrId(15);
+        transactions.setTrId(5);
         transactions.setTrAmt(100);
         transactions.setCcNumber(123456789);
         transactions.setCcName("test");
@@ -52,7 +52,7 @@ public class TransactionTest {
     @Test
     public void testFindByID(){
         Transactions transactions = repository.findById(1);
-        assertEquals(transactions.getTrAmt(), 25);
+        assertEquals(transactions.getTrAmt(), 100);
     }
 
     @Test
@@ -65,11 +65,11 @@ public class TransactionTest {
     @Test
     public void testUpdateTransaction() {
         Transactions transactions = new Transactions();
-        transactions.setTrId(10);
+        transactions.setTrId(2);
         transactions.setTrAmt(9090);
         repository.save(transactions);
 
-        Transactions transactions1 = repository.findById(10);
+        Transactions transactions1 = repository.findById(2);
         //check update
         assertEquals(transactions1.getTrAmt(), 9090);
 
@@ -79,7 +79,7 @@ public class TransactionTest {
     public void testDeleteTransaction(){
 
         var b4Delete = repository.count();
-        repository.deleteById(6);
+        repository.deleteById(4);
         var afterDelete = repository.count();
 
         assertEquals(b4Delete, afterDelete+1);

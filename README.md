@@ -1,6 +1,8 @@
-# group-project
+# SE452-Group01
 
-This repository serves as the group project for Spring 2023 SE453 Group 
+## Objective
+This repository serves as the group project for Spring 2023 SE453 Group 01
+To build an e-commerce application
 
 **Project Scope Area**
 ---
@@ -8,6 +10,11 @@ E-commerce
 We are developing a basic shopping application.
 The user can create an account and browse various categories and products.
 The user can place an order and make a payment through the application.
+
+<br>
+* Milestone 1: Discussed and determined the project and created the skeleton base structure and divided the functional areas for each member to work.<br />
+* Milestone 2: Created the project data persistence and few basic services for each functional module.
+* MileStone 3: Updated few tables based on requirement and added mappings as needed, Created few customized services, Updated the package-info.java
 
 **Project Members**
 ---
@@ -24,16 +31,16 @@ Decide as a group after team discussion
 
 **Communication Mechanism**
 ---
-MS Teams and Github. 
+MS Teams and Whatsapp 
 Will meet twice a week or more if needed.
 
 **Decision Made**
 ---
-1. IDE - IntelliJ
-2. Dependency Management - Gradle
-3. Code - Lombok
-4. Configuration Management - Yaml
-5. Database - H2
+1. IDE - IntelliJ (everyone were comfortable)
+2. Dependency Management - Gradle (familiarity)
+3. Code - Lombok (Learning new library)
+4. Configuration Management - Yaml (found this more easier to implement)
+5. Database - MariaDB (running on ec2, made our work more easier)
 
 **Meeting Journal**
 ---
@@ -54,3 +61,16 @@ We also included additional services that would support the Application flow.
 Concepts such as relation mapping and inheritance were considered while designing the application.
 We discussed about the UI layer in the meeting and finalised on implementing Angular JS.
 Currently working on including NoSql to support certain features of the app.
+
+| #   | Date      | Note                                                                                                                                     |
+|-----|-----------|------------------------------------------------------------------------------------------------------------------------------------------|
+| 1   | 4.3.2023  | We discussed and decided our project scope and made decisions on IDE,Database, Code, Dependency Management,etc                           |
+| 2   | 4.6.2023  | We created the Springboot skeleton for the project based on the decisions made, and divided the functionalities for members of the team. |
+| 3   | 4.8.2023  | Tried to merge our code in README file and learnt basics of git repository                                                               |
+| 4   | 4.22.2023 | Discussed primary keys, foreign keys for all the tables and implemented them                                                             |
+| 5   | 5.08.2023 | We discussed on few database relations and how to create controllers and services and test cases for them                                |
+| 6   | 5.10.2023 | We discussed about individual codes and validated the approaches for the project. We decided to implement swagger                        |
+| 7   | 5.16.2023 | We discussed about the front end preferences and decided to implememt either angular or react                                            |
+
+
+

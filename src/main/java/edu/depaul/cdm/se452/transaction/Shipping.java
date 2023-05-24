@@ -10,11 +10,13 @@ import lombok.Data;
 public class Shipping {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="shp_id")
     private long shpId;
 
     @OneToOne
-    @JoinColumn(name = "tr_id")
+    //@Column(insertable = false, updatable = false)
+    @PrimaryKeyJoinColumn(name = "tr_id")
     private Transactions transactions;
 
     @Column(name="shp_method")
@@ -30,6 +32,8 @@ public class Shipping {
     private String state;
     // @JoinColumn(name="tr_id", referencedColumnName = "tr_id")
     //  private Transactions transaction;
+
+    @PrimaryKeyJoinColumn(name = "tr_id")
     @Column(name="tr_id")
     private long trId;
 }

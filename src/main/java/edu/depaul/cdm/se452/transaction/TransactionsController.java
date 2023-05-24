@@ -24,11 +24,11 @@ public class TransactionsController {
        return transactionService.findById(id);
     }
 
-    @GetMapping(value="/date/{date}", produces = "application/json")
+    /**@GetMapping(value="/date/{date}", produces = "application/json")
     public List<Transactions> getTransactionbyDate(@PathVariable Date trDate) {
         List<Transactions> transactions = transactionService.findByDate(trDate);
         return transactions;
-    }
+    }**/
 
     @GetMapping
     public List<Transactions> getAllTransactions() {

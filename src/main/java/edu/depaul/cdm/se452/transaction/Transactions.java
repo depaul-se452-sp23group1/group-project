@@ -16,11 +16,8 @@ public class Transactions {
     @Column(name = "tr_id")
     private long trId;
 
-    @OneToOne(mappedBy = "transactions", cascade = CascadeType.ALL)
-    private Shipping shipping;
-
-   @Column(name = "tr_date")
-    private Date trDate;
+  // @Column(name = "tr_date")
+   // private Date trDate;
 
   //  @JoinColumn(name="order_id", referencedColumnName = "order_id") //check
     //private Order order;
