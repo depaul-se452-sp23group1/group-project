@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
+
 /**
  * Documented services
  */
@@ -31,6 +32,7 @@ public class TransactionsController {
     }**/
 
     @GetMapping
+
     public List<Transactions> getAllTransactions() {
         List<Transactions> transactions = transactionService.findAll();
         return transactions;
