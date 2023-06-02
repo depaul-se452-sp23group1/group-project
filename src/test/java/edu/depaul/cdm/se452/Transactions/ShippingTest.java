@@ -73,4 +73,4 @@ public class ShippingTest {
         assertEquals(shippings.size(), totalCount);
     }**/
 
-    }
+}
