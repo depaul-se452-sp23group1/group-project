@@ -9,4 +9,7 @@ public class UIController {
     public String Customer(){
         return "Login";
     }
+
+    @RequestMapping(value ="/customer/signup")
+    public String Customer1(){return "SignUp";}
 }
