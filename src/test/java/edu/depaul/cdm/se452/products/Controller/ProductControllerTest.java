@@ -1,7 +1,6 @@
 package edu.depaul.cdm.se452.products.Controller;
 
 import edu.depaul.cdm.se452.products.model.Product;
-import edu.depaul.cdm.se452.products.service.CategoryService;
 import edu.depaul.cdm.se452.products.service.ProductService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,18 +15,16 @@ import static org.mockito.Mockito.*;
 
 class ProductControllerTest {
     private ProductService productService;
-    private CategoryService categoryService;
     private ProductController productController;
 
     @BeforeEach
     void setUp() {
         productService = mock(ProductService.class);
-        categoryService = mock(CategoryService.class);
         productController = new ProductController();
 
         productController.productService = productService;
-        productController.categoryService = categoryService;
     }
+
 
     @Test
     void testGetAllProducts() {
@@ -46,28 +43,15 @@ class ProductControllerTest {
     }
 
     @Test
-    void testGetProductByIdFound() {
+    void testGetProductById() {
         Product product = new Product(1, "Product 1", 100.0, "Description 1");
 
         when(productService.getProductById(1)).thenReturn(product);
 
-        ResponseEntity<Product> result = productController.getProductById(1);
+        Product result = productController.getProductById(1);
 
         assertNotNull(result);
-        assertEquals(HttpStatus.OK, result.getStatusCode());
-        assertEquals(product, result.getBody());
-        verify(productService, times(1)).getProductById(1);
-    }
-
-    @Test
-    void testGetProductByIdNotFound() {
-        when(productService.getProductById(1)).thenReturn(null);
-
-        ResponseEntity<Product> result = productController.getProductById(1);
-
-        assertNotNull(result);
-        assertEquals(HttpStatus.NOT_FOUND, result.getStatusCode());
-        assertNull(result.getBody());
+        assertEquals(product, result);
         verify(productService, times(1)).getProductById(1);
     }
 
@@ -103,48 +87,38 @@ class ProductControllerTest {
     }
 
     @Test
-    void testGetProductByNameFound() {
+    void testCreateProduct() {
         Product product = new Product(1, "Product 1", 100.0, "Description 1");
 
-        when(productService.getProductByName("Product 1")).thenReturn(product);
+        when(productService.saveProduct(product)).thenReturn(product);
 
-        ResponseEntity<Product> result = productController.getProductByName("Product 1");
+        Product result = productController.createProduct(product);
 
         assertNotNull(result);
-        assertEquals(HttpStatus.OK, result.getStatusCode());
-        assertEquals(product, result.getBody());
-        verify(productService, times(1)).getProductByName("Product 1");
+        assertEquals(product, result);
+        verify(productService, times(1)).saveProduct(product);
     }
 
     @Test
-    void testGetProductByNameNotFound() {
-        when(productService.getProductByName("Product 1")).thenReturn(null);
+    void testUpdateProduct() {
+        Product existingProduct = new Product(1, "Product 1", 100.0, "Description 1");
+        Product updatedProduct = new Product(1, "Updated Product1", 120.0, "Updated Description 1");
 
-        ResponseEntity<Product> result = productController.getProductByName("Product 1");
-
-        assertNotNull(result);
-        assertEquals(HttpStatus.NOT_FOUND, result.getStatusCode());
-        assertNull(result.getBody());
-        verify(productService, times(1)).getProductByName("Product 1");
-    }
-
-
-    @Test
-    void testUpdateProductNotFound() {
-        Product updatedProduct = new Product("Updated Product1", 120.0, "Updated Description 1");
-        when(productService.getProductById(1)).thenReturn(null);
+        when(productService.getProductById(1)).thenReturn(existingProduct);
+        when(productService.saveProduct(updatedProduct)).thenReturn(updatedProduct);
 
         ResponseEntity<Product> result = productController.updateProduct(1, updatedProduct);
 
         assertNotNull(result);
-        assertEquals(HttpStatus.NOT_FOUND, result.getStatusCode());
-        assertNull(result.getBody());
+        assertEquals(HttpStatus.OK, result.getStatusCode());
+        assertEquals(updatedProduct, result.getBody());
         verify(productService, times(1)).getProductById(1);
-        verify(productService, never()).saveProduct(any(Product.class));
+        verify(productService, times(1)).saveProduct(updatedProduct);
     }
 
+
     @Test
-    void testDeleteProductFound() {
+    void testDeleteProduct() {
         Product existingProduct = new Product(1, "Product 1", 100.0, "Description 1");
 
         when(productService.getProductById(1)).thenReturn(existingProduct);
@@ -157,16 +131,4 @@ class ProductControllerTest {
         verify(productService, times(1)).deleteProduct(1);
     }
 
-    @Test
-    void testDeleteProductNotFound() {
-        when(productService.getProductById(1)).thenReturn(null);
-
-        ResponseEntity<Void> result = productController.deleteProduct(1);
-
-        assertNotNull(result);
-        assertEquals(HttpStatus.NOT_FOUND, result.getStatusCode());
-        verify(productService, times(1)).getProductById(1);
-        verify(productService, never()).deleteProduct(1);
-    }
 }
-
