@@ -1,0 +1,12 @@
+#start:   docker-compose up -d
+#stop:    docker-compse down
+
+version: '1.0'
+
+services:
+  app:
+    container_name: loquent_keldysh
+    image: bramhashreemanoharan/bramse452:latest
+    env_file: ./.env
+    ports:
+      - "$SPRING_LOCAL_PORT:$SPRING_DOCKER_PORT"
