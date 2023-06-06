@@ -15,7 +15,7 @@ The user can place an order and make a payment through the application.
 * Milestone 1: Discussed and determined the project and created the skeleton base structure and divided the functional areas for each member to work.<br />
 * Milestone 2: Created the project data persistence and few basic services for each functional module.
 * MileStone 3: Updated few tables based on requirement and added mappings as needed, Created few customized services, Updated the package-info.java
-
+* Final Submission: Added the ui layer and implemented Spring Security for 2 type of users for authorization operations
 **Project Members**
 ---
 | Name          | Functional Area                |
@@ -70,7 +70,27 @@ Currently working on including NoSql to support certain features of the app.
 | 4   | 4.22.2023 | Discussed primary keys, foreign keys for all the tables and implemented them                                                             |
 | 5   | 5.08.2023 | We discussed on few database relations and how to create controllers and services and test cases for them                                |
 | 6   | 5.10.2023 | We discussed about individual codes and validated the approaches for the project. We decided to implement swagger                        |
-| 7   | 5.16.2023 | We discussed about the front end preferences and decided to implememt either angular or react                                            |
+| 7   | 5.16.2023 | We discussed about the front end preferences and decided to add thymeleaf dependency                                                     |
+| 8   | 5.27.2023 | Went over authentication and authorization implementation ans also completed ui and its integration                                      |
+| 9   | 6.3.2023  | Went over the rubrics and made sure nothing was pending for the finals                                                                   |
+
+---
+**Appendix**
+**Working Screenshots of group member 1: Bramhashree Manoharan**
+![Transactions_Testing.png](src/main/java/edu/depaul/cdm/se452/transaction/resources/images/Transactions_Testing.png)
+![Shipping_Testing.png](src/main/java/edu/depaul/cdm/se452/transaction/resources/images/Shipping_Testing.png)
+![Java CI with Gradle.png](src/main/java/edu/depaul/cdm/se452/transaction/resources/images/Java CI with Gradle.png)
+![Docker.png](src/main/java/edu/depaul/cdm/se452/transaction/resources/images/Docker.png)
+![Docker_images.png](src/main/java/edu/depaul/cdm/se452/transaction/resources/images/Docker_images.png)
+![Transactions Page.png](src/main/java/edu/depaul/cdm/se452/transaction/resources/images/Transactions Page.png)
+![Shipping Page.png](src/main/java/edu/depaul/cdm/se452/transaction/resources/images/Shipping Page.png)
+![SuccessPage.png](src/main/java/edu/depaul/cdm/se452/transaction/resources/images/SuccessPage.png)
+
+**Working Screenshots of group member 2:**
+
+**Working Screenshots of group member 3:**
+
+**Working Screenshots of group member 4:**
 
 
 
