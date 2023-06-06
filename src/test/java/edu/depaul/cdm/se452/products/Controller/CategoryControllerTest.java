@@ -1,13 +1,9 @@
 package edu.depaul.cdm.se452.products.Controller;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-
 import edu.depaul.cdm.se452.products.model.Category;
 import edu.depaul.cdm.se452.products.service.CategoryService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.ArgumentCaptor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
@@ -30,9 +26,9 @@ class CategoryControllerTest {
     }
 
     @Test
-    void testGetAllCategories() {
-        Category category1 = new Category(1, "Electronics");
-        Category category2 = new Category(2, "Books");
+    void getAllCategories() {
+        Category category1 = new Category(1L, "Electronics");
+        Category category2 = new Category(2L, "Books");
         List<Category> categories = Arrays.asList(category1, category2);
 
         when(categoryService.getAllCategories()).thenReturn(categories);
@@ -40,99 +36,69 @@ class CategoryControllerTest {
         List<Category> result = categoryController.getAllCategories();
 
         assertNotNull(result);
+        assertEquals(2, result.size());
         assertEquals(categories, result);
         verify(categoryService, times(1)).getAllCategories();
     }
 
     @Test
-    void testGetCategoryByIdFound() {
-        Category category = new Category(1, "Electronics");
+    void getCategoryById() {
+        Category category = new Category(1L, "Electronics");
 
-        when(categoryService.getCategoryById(1)).thenReturn(category);
+        when(categoryService.getCategoryById(1L)).thenReturn(category);
 
-        ResponseEntity<Category> result = categoryController.getCategoryById(1);
+        Category result = categoryController.getCategoryById(1L);
 
         assertNotNull(result);
-        assertEquals(HttpStatus.OK, result.getStatusCode());
-        assertEquals(category, result.getBody());
-        verify(categoryService, times(1)).getCategoryById(1);
+        assertEquals(category, result);
+        verify(categoryService, times(1)).getCategoryById(1L);
     }
 
     @Test
-    void testGetCategoryByIdNotFound() {
-        when(categoryService.getCategoryById(1)).thenReturn(null);
-
-        ResponseEntity<Category> result = categoryController.getCategoryById(1);
-
-        assertNotNull(result);
-        assertEquals(HttpStatus.NOT_FOUND, result.getStatusCode());
-        assertNull(result.getBody());
-        verify(categoryService, times(1)).getCategoryById(1);
-    }
-
-    @Test
-    void testGetCategoryByNameFound() {
-        Category category = new Category(1, "Electronics");
+    void getCategoryByName() {
+        Category category = new Category(1L, "Electronics");
 
         when(categoryService.getCategoryByName("Electronics")).thenReturn(category);
 
-        ResponseEntity<Category> result = categoryController.getCategoryByName("Electronics");
+        Category result = categoryController.getCategoryByName("Electronics");
 
         assertNotNull(result);
-        assertEquals(HttpStatus.OK, result.getStatusCode());
-        assertEquals(category, result.getBody());
+        assertEquals(category, result);
         verify(categoryService, times(1)).getCategoryByName("Electronics");
     }
 
     @Test
-    void testGetCategoryByNameNotFound() {
-        when(categoryService.getCategoryByName("Electronics")).thenReturn(null);
+    void createCategory() {
+        Category category = new Category("Electronics");
 
-        ResponseEntity<Category> result = categoryController.getCategoryByName("Electronics");
+        when(categoryService.saveCategory(any(Category.class))).thenReturn(category);
 
-        assertNotNull(result);
-        assertEquals(HttpStatus.NOT_FOUND, result.getStatusCode());
-        assertNull(result.getBody());
-        verify(categoryService, times(1)).getCategoryByName("Electronics");
-    }
-
-
-    @Test
-    void testUpdateCategoryNotFound() {
-        when(categoryService.getCategoryById(1)).thenReturn(null);
-
-        ResponseEntity<Category> result = categoryController.updateCategory(1, new Category("Updated Electronics"));
+        Category result = categoryController.createCategory(category);
 
         assertNotNull(result);
-        assertEquals(HttpStatus.NOT_FOUND, result.getStatusCode());
-        assertNull(result.getBody());
-        verify(categoryService, times(1)).getCategoryById(1);
+        assertEquals(category, result);
+        verify(categoryService, times(1)).saveCategory(any(Category.class));
     }
 
     @Test
-    void testDeleteCategoryFound() {
-        Category category = new Category(1, "Electronics");
+    void updateCategory() {
+        Category updatedCategory = new Category("Updated Electronics");
+        updatedCategory.setId(1L);
 
-        when(categoryService.getCategoryById(1)).thenReturn(category);
+        when(categoryService.saveCategory(any(Category.class))).thenReturn(updatedCategory);
 
-        ResponseEntity<Void> result = categoryController.deleteCategory(1);
+        Category result = categoryController.updateCategory(1L, updatedCategory);
 
         assertNotNull(result);
-        assertEquals(HttpStatus.NO_CONTENT, result.getStatusCode());
-        verify(categoryService, times(1)).getCategoryById(1);
-        verify(categoryService, times(1)).deleteCategory(1);
+        assertEquals("Updated Electronics", result.getName());
+        verify(categoryService, times(1)).saveCategory(any(Category.class));
     }
 
     @Test
-    void testDeleteCategoryNotFound() {
-        when(categoryService.getCategoryById(1)).thenReturn(null);
-
-        ResponseEntity<Void> result = categoryController.deleteCategory(1);
-
-        assertNotNull(result);
-        assertEquals(HttpStatus.NOT_FOUND, result.getStatusCode());
-        verify(categoryService, times(1)).getCategoryById(1);
+    void deleteCategory() {
+        doNothing().when(categoryService).deleteCategory(1L);
+        categoryController.deleteCategory(1L);
+        verify(categoryService, times(1)).deleteCategory(1L);
     }
-
 
 }
