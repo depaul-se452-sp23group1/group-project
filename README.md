@@ -86,7 +86,12 @@ Currently working on including NoSql to support certain features of the app.
 ![Shipping Page.png](src/main/java/edu/depaul/cdm/se452/transaction/resources/images/Shipping Page.png)
 ![SuccessPage.png](src/main/java/edu/depaul/cdm/se452/transaction/resources/images/SuccessPage.png)
 
-**Working Screenshots of group member 2:**
+**Working Screenshots of group member 2:Karthik Chandrasekaran**
+![CustomerTest.png](src/main/java/edu/depaul/cdm/se452/accounts/resources/CustomerTest.png)
+![SwaggerImplementation](src/main/java/edu/depaul/cdm/se452/accounts/resources/SwaggerImplementation.png)
+![LoginPage](src/main/java/edu/depaul/cdm/se452/accounts/resources/LoginPage.png)
+![SignUpPage](src/main/java/edu/depaul/cdm/se452/accounts/resources/Signuppage.png)
+
 
 **Working Screenshots of group member 3:**
 
